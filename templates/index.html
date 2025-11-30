@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavan Kumar V - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @keyframes blob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-50px) scale(1.1)}66%{transform:translate(-20px,30px) scale(0.9)}}
+    .animate-blob{animation:blob 20s infinite}.d1{animation-delay:0s}.d2{animation-delay:2s}.d3{animation-delay:4s}
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+<!-- Animated Gradient Background -->
+<div class="fixed inset-0 -z-10 overflow-hidden">
+  <div class="absolute w-96 h-96 -left-20 -top-20 bg-blue-600 rounded-full mix-blend-multiply blur-3xl opacity-40 animate-blob d1"></div>
+  <div class="absolute w-96 h-96 -right-20 top-40 bg-purple-600 rounded-full mix-blend-multiply blur-3xl opacity-40 animate-blob d2"></div>
+  <div class="absolute w-96 h-96 left-40 bottom-0 bg-pink-600 rounded-full mix-blend-multiply blur-3xl opacity-40 animate-blob d3"></div>
+</div>
+
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center justify-center text-center px-6">
+  <div class="z-10">
+    <h1 class="text-6xl md:text-8xl font-bold mb-4">{{ data.name }}</h1>
+    <p class="text-3xl md:text-5xl mb-6 text-cyan-400">Mechatronics Engineer</p>
+    <p class="mt-4 text-lg text-pink-300 font-semibold">IoT & Automation Engineer</p>
+    
+
+    <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-white/90 italic max-w-4xl mx-auto mb-8 px-4">
+      “Live production experience in <span class="text-cyan-300 font-bold">EV battery manufacturing</span> — 
+      deployed & supported applications connected to <span class="text-green-400 font-bold">PLC-controlled CNC machines</span>, 
+      validated real-time production data with DBeaver, and ensured 100% uptime on the manufacturing plant.”
+    </p>
+    <p class="text-base sm:text-lg md:text-xl text-pink-300 font-medium mb-8">
+      Ready to build the future of electric mobility — from battery pack to BMS to vehicle integration.
+    </p>
+ 
+    <p class="text-xl mb-8">{{ data.location }} • {{ data.phone }} • {{ data.email }}</p>
+
+    <!-- Interactive Icons -->
+    <div class="flex justify-center gap-12 text-5xl mb-12">
+      <a href="https://www.linkedin.com/in/pavan-kumar-v-/" target="_blank" class="hover:scale-125 transition"><i class="fab fa-linkedin text-blue-400"></i></a>
+      <a href="mailto:{{ data.email }}" class="hover:scale-125 transition"><i class="fas fa-envelope text-red-400"></i></a>
+      <a href="tel:{{ data.phone }}" class="hover:scale-125 transition"><i class="fas fa-phone text-green-400"></i></a>
+    </div>
+
+    <!-- Resume Download Button -->
+    <a href="/static/Pavan_Kumar_Resume.pdf" download class="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 px-10 py-5 rounded-full text-2xl font-bold hover:scale-110 transition shadow-2xl">
+      Download Resume
+    </a>
+  </div>
+</header>
+
+<div class="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-24 space-y-20 sm:space-y-32">
+
+  <!-- Professional Summary -->
+  <section class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-8 sm:p-12">
+    <h2 class="text-5xl font-bold mb-10 text-cyan-400">Professional Summary</h2>
+    <ul class="space-y-4 text-lg leading-relaxed">
+      {% for item in data.professional_summary %}
+        <li class="flex"><span class="text-cyan-400 mr-3">•</span> {{ item }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <!-- Technical Skills -->
+  <section class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12">
+    <h2 class="text-5xl font-bold mb-10 text-purple-400">Technical Skills</h2>
+    <div class="grid md:grid-cols-2 gap-8 text-lg">
+      {% for category, skills in data.technical_skills.items() %}
+        <div><strong class="text-purple-300">{{ category }}:</strong> {{ skills }}</div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section>
+    <h2 class="text-5xl font-bold text-center mb-16 text-green-400">Experience</h2>
+    {% for exp in data.professional_experience %}
+      <div class="bg-gradient-to-r from-green-600/20 to-cyan-600/20 rounded-3xl p-10 mb-12 border border-white/10">
+        <h3 class="text-3xl font-bold text-green-300">{{ exp.title }}</h3>
+        <p class="text-xl mb-2">{{ exp.company }} ({{ exp.duration }})</p>
+        {% if exp.client %}<p class="text-lg opacity-80 mb-6">Client: {{ exp.client }}</p>{% endif %}
+        <ul class="space-y-3 text-lg">
+          {% for point in exp.responsibilities %}
+            <li class="flex"><span class="text-green-400 mr-3">•</span> {{ point }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <h2 class="text-5xl font-bold text-center mb-16 text-pink-400">Projects</h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      {% for proj in data.project_experience %}
+        <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:scale-105 transition">
+          <h3 class="text-2xl font-bold mb-4">{{ proj.title }}</h3>
+          <p class="opacity-90">{{ proj.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 text-center">
+    <h2 class="text-5xl font-bold mb-10 text-yellow-400">Education</h2>
+    {% for edu in data.education %}
+      <div class="text-2xl mb-6">
+        <p class="font-bold">{{ edu.degree }}</p>
+        <p>{{ edu.institution }} • {{ edu.year }}</p>
+        {% if edu.gpa %}<p class="text-yellow-300">GPA: {{ edu.gpa }}</p>{% endif %}
+        {% if edu.percentage %}<p class="text-yellow-300">{{ edu.percentage }}</p>{% endif %}
+      </div>
+    {% endfor %}
+  </section>
+
+</div>
+
+<footer class="text-center py-12 text-gray-400 text-lg">
+  © • 2025 Pavan Kumar V
+</footer>
+
+</body>
+</html>
