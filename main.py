@@ -11,7 +11,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; background: #1a212e; color: #e2e8f0; }
-    .top-bar { background: linear-gradient(135deg, #407686f1 0%, #3b82f6 100%); }
+    .top-bar { background: linear-gradient(135deg, #afb2b3f1 0%, #000000 100%); }
     .nav-item { transition: all 0.3s; }
     .nav-item:hover, .nav-item.active { background: rgba(100,255,218,0.2); color: #64ffda; }
     .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); border: 1px solid rgba(100,255,218,0.2); }
@@ -171,3 +171,4 @@
   </script>
 </body>
 </html>
+
