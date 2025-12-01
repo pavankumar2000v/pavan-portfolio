@@ -21,7 +21,7 @@ async def home(request: Request):
         "location": "Bangalore, India",
         "phone": "+91 7090167278",
         "email": "pavanmte2023@gmail.com",
-        "linkedin": "www.linkedin.com/in/--pavan-kumar-v", 
+        "linkedin": "https://www.linkedin.com/in/--pavan-kumar-v/", 
 
         # Professional Summary (exact from your resume)
         "professional_summary": [
@@ -90,3 +90,4 @@ async def home(request: Request):
         ]
     }
     return templates.TemplateResponse("index.html", {"request": request, "data": data})
+
