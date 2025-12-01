@@ -23,7 +23,7 @@
 <body>
   <script> AOS.init({ once: true, duration: 800 }); </script>
 
-  <!-- Top Navigation Bar (Fixed, Horizontal like GarudaWNX) -->
+  <!-- Top Navigation Bar (Fixed, Horizontal) -->
   <nav class="top-bar fixed top-0 left-0 right-0 z-50 flex justify-center space-x-1 px-4 py-3 shadow-lg">
     <a href="#about" class="nav-item active px-6 py-2 rounded-lg text-white font-semibold">About</a>
     <a href="#experience" class="nav-item px-6 py-2 rounded-lg text-white font-semibold">Experience</a>
@@ -171,4 +171,3 @@
   </script>
 </body>
 </html>
-
